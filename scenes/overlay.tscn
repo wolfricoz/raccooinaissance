@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6mqctcudweoy"]
+
+[ext_resource type="Texture2D" uid="uid://dy7u3imwklavo" path="res://Sprites/inventory-closed1.png" id="1_eq71a"]
+[ext_resource type="Texture2D" uid="uid://dgg1togqrrenw" path="res://Sprites/inventory-closed2.png" id="2_h78c7"]
+
+[node name="overlay" type="CanvasLayer"]
+
+[node name="inventoryButton" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+scale = Vector2(2.34382, 2.34382)
+
+[node name="closed" type="Sprite2D" parent="inventoryButton"]
+position = Vector2(24, 24)
+texture = ExtResource("1_eq71a")
+
+[node name="open" type="Sprite2D" parent="inventoryButton"]
+visible = false
+position = Vector2(24, 24)
+texture = ExtResource("2_h78c7")

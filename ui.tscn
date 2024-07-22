@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7v83tknekeyw"]
+
+[ext_resource type="Script" path="res://scripts/ui.cs" id="1_3qs53"]
+[ext_resource type="Texture2D" uid="uid://cayvhl2kk2juy" path="res://Sprites/title.png" id="2_qhwcn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_t1b3s"]
+specular_color = Color(0.877421, 0, 0.00823498, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ule23"]
+texture = SubResource("CanvasTexture_t1b3s")
+
+[sub_resource type="Theme" id="Theme_hbruf"]
+Button/styles/focus = SubResource("StyleBoxTexture_ule23")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6ham3"]
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_3qs53")
+metadata/_edit_vertical_guides_ = [550.0]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-8, -8)
+scale = Vector2(3.05097, 3.05097)
+
+[node name="Title" type="Sprite2D" parent="Node2D"]
+position = Vector2(192, 66.6667)
+scale = Vector2(0.241963, 0.241963)
+texture = ExtResource("2_qhwcn")
+
+[node name="StartButton" type="Button" parent="Node2D"]
+offset_left = 136.0
+offset_top = 149.333
+offset_right = 232.0
+offset_bottom = 180.333
+theme = SubResource("Theme_hbruf")
+text = "Start Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+modulate = Color(0, 0.388235, 0.298039, 1)
+z_index = -1
+z_as_relative = false
+position = Vector2(192, 109.333)
+scale = Vector2(384.5, 216.5)
+texture = SubResource("CanvasTexture_6ham3")
+
+[connection signal="pressed" from="Node2D/StartButton" to="." method="_on_start_button_pressed"]
