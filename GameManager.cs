@@ -8,6 +8,7 @@ public partial class GameManager : Node2D
 	public static GameManager Singleton { get; private set; }
 	public string PreviousScene = "";
 	public bool IsPaused;
+	public bool IsInventoryOpen = false;
 	public string CurrentScene = "res://scenes/ui.tscn";
 	public PackedScene GameScene = GD.Load<PackedScene>("res://game.tscn");
 	public Dictionary<string, int> Inventory = new Dictionary<string, int>();

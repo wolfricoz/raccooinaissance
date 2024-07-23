@@ -30,7 +30,7 @@ public partial class overlay : CanvasLayer
 
 	private void _on_inventory_button_pressed()
 	{
-		// Replace with function body.
+	GameManager.Singleton.IsInventoryOpen = !GameManager.Singleton.IsInventoryOpen;
 	}
 
 

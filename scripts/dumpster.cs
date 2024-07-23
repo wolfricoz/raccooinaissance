@@ -1,18 +1,39 @@
 using Godot;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class dumpster : Node2D
 {
-	public bool IsLooted = false;
+	public bool IsLooted;
+	private double _time;
+	private List<string> _inventory = new List<string>();
+	private CustomSignals _customSignals;
+
+	private Label _label;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+		_customSignals.AddToDumpster += AddToDumpsterInventory;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (!IsLooted || _label == null)
+		{
+			return;
+		}
+
+		_time += 1 * delta;
+		if (_time > 3000)
+		{
+			this.RemoveChild(_label);
+			_label = null;
+			_time = 0;
+			GD.Print("Label removed");
+		}
 	}
 
 	private void _on_area_2d_body_entered(Node2D body)
@@ -27,13 +48,39 @@ public partial class dumpster : Node2D
 		{
 			return;
 		}
-		GameManager.Singleton.Inventory.Add("Trash", 1);
+
+		GD.Print("Looting");
+		foreach (string item in _inventory)
+		{
+			if (GameManager.Singleton.Inventory.ContainsKey(item))
+			{
+				GameManager.Singleton.Inventory[item] += 1;
+			}
+			else
+			{
+				GameManager.Singleton.Inventory.Add(item, 1);
+			}
+		}
+
 		IsLooted = true;
 		GD.Print(GameManager.Singleton.Inventory);
+		_label = new Label();
+		_label.Text = "You found: " + string.Join(", ", _inventory);
+		_label.Rotation = -this.Rotation;
+		this.AddChild(_label);
 	}
 
 	private void _on_area_2d_body_exited(Node2D body)
 	{
 		GameManager.Singleton.IsHidden = false;
+	}
+
+	public void AddToDumpsterInventory(string item, string name)
+	{
+		if (this.Name != name)
+		{
+			return;
+		}
+		_inventory.Add(item);
 	}
 }
