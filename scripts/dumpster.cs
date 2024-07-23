@@ -25,9 +25,8 @@ public partial class dumpster : Node2D
 		{
 			return;
 		}
-
 		_time += 1 * delta;
-		if (_time > 3000)
+		if (_time > 5)
 		{
 			this.RemoveChild(_label);
 			_label = null;
@@ -81,6 +80,6 @@ public partial class dumpster : Node2D
 		{
 			return;
 		}
-		_inventory.Add(item);
+		_inventory.Add(item.ToLower());
 	}
 }

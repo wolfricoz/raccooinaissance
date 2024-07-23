@@ -71,5 +71,41 @@ offset_bottom = 24.0
 text = "X"
 horizontal_alignment = 1
 
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(380, -2)
+points = PackedVector2Array(4, 2, 4, 650)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="craftinglabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_right = 0.0651042
+anchor_bottom = 0.0354938
+offset_left = 397.0
+offset_top = 5.0
+offset_right = 471.0
+offset_bottom = 27.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Crafting"
+label_settings = SubResource("LabelSettings_bhecl")
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+offset_left = 400.0
+offset_top = 63.0
+offset_right = 448.0
+offset_bottom = 86.0
+columns = 2
+
+[node name="acidbutton" type="Button" parent="GridContainer2"]
+layout_mode = 2
+text = "Wood eating Acid"
+
+[node name="acidrequirements" type="Label" parent="GridContainer2"]
+layout_mode = 2
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GridContainer2/acidbutton" to="." method="_on_acidbutton_pressed"]

@@ -5,59 +5,82 @@ using Godot.Collections;
 
 public partial class GameManager : Node2D
 {
-	public static GameManager Singleton { get; private set; }
-	public string PreviousScene = "";
-	public bool IsPaused;
-	public bool IsInventoryOpen = false;
-	public string CurrentScene = "res://scenes/ui.tscn";
-	public PackedScene GameScene = GD.Load<PackedScene>("res://game.tscn");
-	public Dictionary<string, int> Inventory = new Dictionary<string, int>();
-	public bool IsHidden;
+    public static GameManager Singleton { get; private set; }
+    public string PreviousScene = "";
+    public bool IsPaused;
+    public bool IsInventoryOpen = false;
+    public string CurrentScene = "res://scenes/ui.tscn";
+    public PackedScene GameScene = GD.Load<PackedScene>("res://game.tscn");
+    public Dictionary<string, int> Inventory = new Dictionary<string, int>();
+    public bool IsHidden;
 
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        if (Singleton != null)
+        {
+            QueueFree();
+            return;
+        }
 
-		if (Singleton != null)
-		{
-			QueueFree();
-			return;
-		}
-
-		Singleton = this;
-
-
-		GD.Print("GameManager Ready");
-
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-
-	}
+        Singleton = this;
 
 
-	public void ChangeScene(string scene, bool savePrevious = true)
-	{
-		if (savePrevious)
-		{
-			GD.Print("Saving previous scene: " + CurrentScene);
-			PreviousScene = CurrentScene;
-		}
+        GD.Print("GameManager Ready");
+    }
 
-		CurrentScene = scene;
-		GD.Print("Changing to scene: " + CurrentScene);
-		this.GetTree().ChangeSceneToFile(CurrentScene);
-	}
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
+    }
 
-	public void ChangePreviousScene()
-	{
-		var temporaryOld = CurrentScene;
-		CurrentScene = PreviousScene;
-		GD.Print("Changing to previous scene: " + PreviousScene);
-		this.GetTree().ChangeSceneToFile(PreviousScene);
-		PreviousScene = temporaryOld;
-	}
+
+    public void ChangeScene(string scene, bool savePrevious = true)
+    {
+        if (savePrevious)
+        {
+            GD.Print("Saving previous scene: " + CurrentScene);
+            PreviousScene = CurrentScene;
+        }
+
+        CurrentScene = scene;
+        GD.Print("Changing to scene: " + CurrentScene);
+        this.GetTree().ChangeSceneToFile(CurrentScene);
+    }
+
+    public void ChangePreviousScene()
+    {
+        var temporaryOld = CurrentScene;
+        CurrentScene = PreviousScene;
+        GD.Print("Changing to previous scene: " + PreviousScene);
+        this.GetTree().ChangeSceneToFile(PreviousScene);
+        PreviousScene = temporaryOld;
+    }
+
+    public void AddToInventory(string item)
+    {
+        item = item.ToLower();
+        if (Inventory.ContainsKey(item))
+        {
+            Inventory[item] += 1;
+        }
+        else
+        {
+            Inventory.Add(item, 1);
+        }
+    }
+
+    public void RemoveFromInventory(string item)
+    {
+        item = item.ToLower();
+        if (Inventory.ContainsKey(item))
+        {
+            Inventory[item] -= 1;
+            if (Inventory[item] <= 0)
+            {
+                Inventory.Remove(item);
+            }
+        }
+    }
 }

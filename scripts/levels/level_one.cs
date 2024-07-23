@@ -11,9 +11,9 @@ public partial class level_one : Node2D
 		_customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 		var dumpster = this.GetNode("dumpster");
 		var dumpster2 = this.GetNode("dumpster2");
-		_customSignals.EmitSignal(nameof(CustomSignals.AddToDumpster), "trash", dumpster.Name);
+		_customSignals.EmitSignal(nameof(CustomSignals.AddToDumpster), "acid a", dumpster.Name);
 		_customSignals.EmitSignal(nameof(CustomSignals.AddToDumpster), "bomb", dumpster.Name);
-		_customSignals.EmitSignal(nameof(CustomSignals.AddToDumpster), "trash", dumpster2.Name);
+		_customSignals.EmitSignal(nameof(CustomSignals.AddToDumpster), "acid b", dumpster2.Name);
 		_customSignals.EmitSignal(nameof(CustomSignals.AddToDumpster), "knife", dumpster2.Name);
 	}
 

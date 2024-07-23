@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 GameManager="*res://GameManager.cs"
 Game="res://game.tscn"
-CustomSignals="*res://scripts/customsignals/CustomSignals.cs"
 
 [display]
 
