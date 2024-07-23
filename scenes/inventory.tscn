@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccp8lciw3lfkq"]
+
+[ext_resource type="Script" path="res://scripts/inventory.cs" id="1_ankq7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7s7oa"]
+specular_color = Color(0.808961, 0.582129, 0.480978, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhecl"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxxxh"]
+font_color = Color(0.129558, 0.129558, 0.129558, 1)
+
+[node name="inventory" type="CanvasLayer"]
+script = ExtResource("1_ankq7")
+
+[node name="background" type="Sprite2D" parent="."]
+modulate = Color(0.517647, 0.494118, 0.529412, 1)
+position = Vector2(576, 323.5)
+scale = Vector2(1152, 647)
+texture = SubResource("CanvasTexture_7s7oa")
+
+[node name="inventorylabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_right = 0.0651042
+anchor_bottom = 0.0354938
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 90.0
+offset_bottom = 27.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Inventory"
+label_settings = SubResource("LabelSettings_bhecl")
+metadata/_edit_use_anchors_ = true
+
+[node name="trash" type="Label" parent="."]
+visible = false
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 87.0
+text = "Trash Collected: "
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 12.0
+offset_top = 59.0
+offset_right = 208.0
+offset_bottom = 232.0
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Items:"
+label_settings = SubResource("LabelSettings_fxxxh")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+text = "X"
+horizontal_alignment = 1
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
