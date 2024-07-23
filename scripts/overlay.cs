@@ -27,4 +27,29 @@ public partial class overlay : CanvasLayer
 		this.GetNode<Sprite2D>("inventoryButton/closed").Show();
 		this.GetNode<Label>("Label").Hide();
 	}
+
+	private void _on_inventory_button_pressed()
+	{
+		// Replace with function body.
+	}
+
+
+	private void _on_pausebutton_mouse_entered()
+	{
+	//change color to white
+		 this.GetNode<Sprite2D>("pausebutton/Pause").Modulate = new Color(1,1,1);
+	}
+
+
+	private void _on_pausebutton_mouse_exited()
+	{
+		// Replace with function body.
+		this.GetNode<Sprite2D>("pausebutton/Pause").Modulate = new Color(0,0,0);
+	}
+
+
+	private void _on_pausebutton_pressed()
+	{
+		GameManager.Singleton.IsPaused = true;
+	}
 }

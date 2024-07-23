@@ -41,9 +41,12 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
 [node name="PauseSceen" parent="ui" instance=ExtResource("2_161cs")]
+process_mode = 3
+layer = 2
 visible = false
 
 [node name="overlay" parent="ui" instance=ExtResource("7_gwqxg")]
 
 [node name="Main Screen" parent="ui" instance=ExtResource("4_qq4od")]
+process_mode = 3
 layer = 4

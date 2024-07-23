@@ -19,24 +19,16 @@ public partial class game : Node2D
 	{
 		if (Input.IsActionJustPressed("Pause"))
 		{
-
 			GD.Print("Pause button pressed " + GameManager.Singleton.IsPaused);
-			if (GameManager.Singleton.IsPaused)
-			{
-				GameManager.Singleton.IsPaused = false;
-				PauseMenu.Hide();
-				GD.Print("Unpausing");
-				Input.MouseMode = Input.MouseModeEnum.Hidden;
-				// GetTree().Paused = false;
-			}
-			else
-			{
-				GameManager.Singleton.IsPaused = true;
-				PauseMenu.Show();
-				GD.Print("Pausing");
-				Input.MouseMode = Input.MouseModeEnum.Visible;
-				// GetTree().Paused = true;
-			}
+			GameManager.Singleton.IsPaused = !GameManager.Singleton.IsPaused;
 		}
+
+		if (GameManager.Singleton.IsPaused != PauseMenu.Visible)
+		{
+			GD.Print("Pause State Changed");
+			PauseMenu.Visible = GameManager.Singleton.IsPaused;
+			GetTree().Paused = GameManager.Singleton.IsPaused;
+		}
+
 	}
 }
