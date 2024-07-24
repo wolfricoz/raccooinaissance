@@ -141,3 +141,6 @@ progress = 621.007
 position = Vector2(-7.05273, 1.80487)
 rotation = -1.54303
 scale = Vector2(1, 1)
+
+[node name="start" type="Node2D" parent="."]
+position = Vector2(734, 383)

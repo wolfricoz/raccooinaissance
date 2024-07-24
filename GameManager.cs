@@ -13,6 +13,8 @@ public partial class GameManager : Node2D
     public PackedScene GameScene = GD.Load<PackedScene>("res://game.tscn");
     public Dictionary<string, int> Inventory = new Dictionary<string, int>();
     public bool IsHidden;
+    public bool GameOver;
+    public Vector2 StartPosition;
 
 
     // Called when the node enters the scene tree for the first time.

@@ -5,6 +5,7 @@ public partial class game : Node2D
 {
 	public CanvasLayer PauseMenu;
 	public CanvasLayer InventoryMenu;
+	private CustomSignals _customSignals;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -13,11 +14,17 @@ public partial class game : Node2D
 		GetTree().Paused = false;
 		PauseMenu = GetNode<CanvasLayer>("ui/PauseSceen");
 		InventoryMenu = GetNode<CanvasLayer>("ui/inventory");
+		_customSignals = GetNode<CustomSignals>("/root/CustomSignals");
+		_customSignals.Reset += ResetLevel;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (GameManager.Singleton.GameOver)
+		{
+		}
+
 		if (Input.IsActionJustPressed("inventory"))
 		{
 			GameManager.Singleton.IsInventoryOpen = !GameManager.Singleton.IsInventoryOpen;
@@ -35,6 +42,7 @@ public partial class game : Node2D
 			GD.Print("Pause button pressed " + GameManager.Singleton.IsPaused);
 			GameManager.Singleton.IsPaused = !GameManager.Singleton.IsPaused;
 		}
+
 		if (GameManager.Singleton.IsInventoryOpen != InventoryMenu.Visible)
 		{
 			GD.Print("Inventory State Changed");
@@ -49,5 +57,14 @@ public partial class game : Node2D
 			PauseMenu.Visible = GameManager.Singleton.IsPaused;
 			GetTree().Paused = GameManager.Singleton.IsPaused;
 		}
+	}
+	private void ResetLevel()
+	{
+	// TODO: This works but creates an error; find a better way to do this without error.
+		var lvl = this.GetNode<Node2D>("LevelOne");
+		 this.RemoveChild(lvl);
+		 this.AddChild(lvl);
+
+
 	}
 }

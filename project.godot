@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 GameManager="*res://GameManager.cs"
 Game="res://game.tscn"
 CustomSignals="*res://scripts/customsignals/CustomSignals.cs"
+BackgroundMusic="*res://scenes/background_music.tscn"
+Gameover="*res://scenes/gameover.tscn"
 
 [display]
 

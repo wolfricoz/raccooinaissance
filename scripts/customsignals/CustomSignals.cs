@@ -10,4 +10,7 @@ public partial class CustomSignals : Node
 
 	[Signal]
 	public delegate void TestEventHandler(string item);
+
+	[Signal]
+	public delegate void ResetEventHandler();
 }

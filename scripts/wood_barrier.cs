@@ -5,23 +5,25 @@ public partial class wood_barrier : Node2D
 {
 	private double _timer;
 	private Label _label;
+	private AudioStreamPlayer2D _breakSound;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_label = this.GetNode<Label>("demolition/warning");
+		_breakSound = this.GetNode<AudioStreamPlayer2D>("break");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (_label == null)
+		if (!_label.Visible)
 		{
 			return;
 		}
 		_timer += delta;
 		if (_timer > 3)
 		{
-			this.RemoveChild(_label);
-			_label = null;
+			_label.Visible = false;
 			_timer = 0;
 		}
 
@@ -36,16 +38,14 @@ public partial class wood_barrier : Node2D
 		}
 		if (!GameManager.Singleton.CheckIfItemInInventory("acid"))
 		{
-			_label = new Label();
-			_label.Text = "You need acid to break this barrier";
-			_label.Size = new Vector2(200, 50);
-			this.AddChild(_label);
-			GD.Print("No acid in inventory");
+			_label.Visible = true;
 			return;
 		}
 
 		GameManager.Singleton.RemoveFromInventory("acid");
 		boxsprite.Animation = "broken";
+		_breakSound.Play();
+
 		this.GetNode<CollisionShape2D>("demolition/interaction").Disabled = true;
 		this.GetNode<CollisionShape2D>("StaticBody2D/block").Disabled = true;
 		this.RemoveChild(this.GetNode("StaticBody2D"));
