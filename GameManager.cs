@@ -83,4 +83,13 @@ public partial class GameManager : Node2D
             }
         }
     }
+    public bool CheckIfItemInInventory(string item)
+    {
+        item = item.ToLower();
+        if (Inventory.ContainsKey(item))
+        {
+            return true;
+        }
+        return false;
+    }
 }

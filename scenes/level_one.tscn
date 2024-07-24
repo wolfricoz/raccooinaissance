@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://coqmnwsbvgsr5"]
+[gd_scene load_steps=11 format=3 uid="uid://coqmnwsbvgsr5"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_one.cs" id="1_1r1g1"]
 [ext_resource type="Texture2D" uid="uid://or5o4qohiu6m" path="res://Sprites/Sprite-0003-Sheet.png" id="1_ea2a6"]
 [ext_resource type="Texture2D" uid="uid://ctfckr3gkuxvw" path="res://Sprites/vent.png" id="2_vnvh5"]
 [ext_resource type="PackedScene" uid="uid://cigphldsbscm1" path="res://scenes/vent.tscn" id="4_r3mme"]
 [ext_resource type="PackedScene" uid="uid://b3qu76vpjrwkf" path="res://scenes/dumpster.tscn" id="5_x4wxy"]
+[ext_resource type="PackedScene" uid="uid://w3sjmjtbweqh" path="res://scenes/wood_barrier.tscn" id="6_2n8eo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kayge"]
 texture = ExtResource("2_vnvh5")
@@ -108,3 +109,6 @@ position = Vector2(737, 308)
 [node name="dumpster2" parent="." instance=ExtResource("5_x4wxy")]
 position = Vector2(729, 460)
 rotation = -3.14034
+
+[node name="wood-barrier" parent="." instance=ExtResource("6_2n8eo")]
+position = Vector2(649, 312)
