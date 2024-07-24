@@ -5,6 +5,7 @@ public partial class level_one : Node2D
 {
 	private CustomSignals _customSignals;
 
+	private float _speed = 0.05f;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -20,5 +21,7 @@ public partial class level_one : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		var path = GetNode<PathFollow2D>("Path2D/PathFollow2D");
+		path.ProgressRatio += _speed * (float) delta;
 	}
 }
