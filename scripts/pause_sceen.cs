@@ -1,0 +1,48 @@
+using Godot;
+
+namespace Raccoonnaissance.scenes;
+
+public partial class pause_sceen : CanvasLayer
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		OnPauseMenuButtonPressed();
+
+		if (GameManager.Singleton.IsPaused != this.Visible)
+		{
+			GD.Print("Pause State Changed");
+			this.Visible = GameManager.Singleton.IsPaused;
+			GetTree().Paused = GameManager.Singleton.IsPaused;
+		}
+	}
+
+	public void OnPauseMenuButtonPressed()
+	{
+		if (Input.IsActionJustPressed("Pause"))
+		{
+			if (GameManager.Singleton.IsInventoryOpen)
+			{
+				GD.Print("Closing Inventory");
+				GameManager.Singleton.IsInventoryOpen = false;
+				return;
+			}
+
+			GD.Print("Pause button pressed " + GameManager.Singleton.IsPaused);
+			GameManager.Singleton.IsPaused = !GameManager.Singleton.IsPaused;
+		}
+	}
+
+	private void _on_resume_button_pressed()
+	{
+		GetTree().Paused = false;
+		GameManager.Singleton.IsPaused = false;
+		GD.Print("Resume button pressed");
+		this.Hide();
+	}
+}

@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2vxktecgdswb"]
+
+[ext_resource type="Script" path="res://scripts/pause_sceen.cs" id="1_fgiwc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ax8ab"]
+
+[sub_resource type="Theme" id="Theme_rq5x7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_l8uru"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_psmmt"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_36ha8"]
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="PauseSceen" type="CanvasLayer"]
+script = ExtResource("1_fgiwc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.383081, 0.570357, 0.597071, 1)
+position = Vector2(575.75, 323.75)
+scale = Vector2(1152.5, 648.5)
+texture = SubResource("CanvasTexture_ax8ab")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_as_relative = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.0
+offset_top = 184.0
+offset_right = 226.0
+offset_bottom = 277.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_rq5x7")
+theme_override_font_sizes/normal_font_size = 64
+text = "Game Paused "
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -143.0
+offset_right = 35.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ResumeButton" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resume"
+
+[node name="Main Menu" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control"]
+modulate = Color(0.359069, 0.359069, 0.359069, 1)
+position = Vector2(250.875, 187.278)
+scale = Vector2(497.75, 377.444)
+texture = SubResource("CanvasTexture_l8uru")
+
+[node name="SettingsLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_psmmt")
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 24.0
+offset_right = 89.0
+offset_bottom = 236.0
+
+[node name="Sound" type="Label" parent="Control/GridContainer"]
+layout_mode = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_36ha8")
+
+[node name="HSlider" type="HSlider" parent="Control/GridContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="GridContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

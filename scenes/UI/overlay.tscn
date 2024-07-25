@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6mqctcudweoy"]
+
+[ext_resource type="Script" path="res://scripts/overlay.cs" id="1_6c4rn"]
+[ext_resource type="Texture2D" uid="uid://dy7u3imwklavo" path="res://Sprites/inventory-closed1.png" id="1_eq71a"]
+[ext_resource type="Texture2D" uid="uid://dgg1togqrrenw" path="res://Sprites/inventory-closed2.png" id="2_h78c7"]
+[ext_resource type="Texture2D" uid="uid://dj7w20pfphil0" path="res://Sprites/pause.png" id="4_56r06"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wr4gw"]
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.764706)
+
+[node name="overlay" type="CanvasLayer"]
+script = ExtResource("1_6c4rn")
+
+[node name="inventoryButton" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+scale = Vector2(2.34382, 2.34382)
+
+[node name="closed" type="Sprite2D" parent="inventoryButton"]
+position = Vector2(24, 24)
+texture = ExtResource("1_eq71a")
+
+[node name="open" type="Sprite2D" parent="inventoryButton"]
+visible = false
+position = Vector2(24, 24)
+texture = ExtResource("2_h78c7")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 8.0
+offset_top = 120.0
+offset_right = 48.0
+offset_bottom = 143.0
+text = "Click to open inventory (I)"
+label_settings = SubResource("LabelSettings_wr4gw")
+
+[node name="pausebutton" type="Button" parent="."]
+offset_left = 1032.0
+offset_top = 8.0
+offset_right = 1080.0
+offset_bottom = 56.0
+scale = Vector2(2.34382, 2.34382)
+
+[node name="Pause" type="Sprite2D" parent="pausebutton"]
+position = Vector2(23.8926, 23.8926)
+scale = Vector2(1.29678, 1.29678)
+texture = ExtResource("4_56r06")
+
+[connection signal="mouse_entered" from="inventoryButton" to="." method="_on_inventory_button_mouse_entered"]
+[connection signal="mouse_exited" from="inventoryButton" to="." method="_on_inventory_button_mouse_exited"]
+[connection signal="pressed" from="inventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="mouse_entered" from="pausebutton" to="." method="_on_pausebutton_mouse_entered"]
+[connection signal="mouse_exited" from="pausebutton" to="." method="_on_pausebutton_mouse_exited"]
+[connection signal="pressed" from="pausebutton" to="." method="_on_pausebutton_pressed"]

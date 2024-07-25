@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cigphldsbscm1"]
+
+[ext_resource type="Script" path="res://scripts/vent.cs" id="1_yibbd"]
+[ext_resource type="Texture2D" uid="uid://ctfckr3gkuxvw" path="res://Sprites/vent.png" id="2_ote0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edxip"]
+size = Vector2(16, 16)
+
+[node name="vent" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("1_yibbd")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_edxip")
+
+[node name="ventsprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ote0d")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

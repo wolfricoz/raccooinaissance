@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://60rog87k7ua2"]
+
+[ext_resource type="Script" path="res://scripts/gameover.cs" id="1_daq5d"]
+[ext_resource type="AudioStream" uid="uid://bcp42lifk6jei" path="res://music/game-over-classic-206486.wav" id="2_683ua"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8861j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ubi1m"]
+font_size = 64
+font_color = Color(0.635294, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="Node2D"]
+
+[node name="gameover" type="CanvasLayer" parent="."]
+script = ExtResource("1_daq5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="gameover"]
+modulate = Color(0.412152, 0.412152, 0.412152, 1)
+position = Vector2(573.5, 324)
+scale = Vector2(1179, 652)
+texture = SubResource("CanvasTexture_8861j")
+
+[node name="gameoversound" type="AudioStreamPlayer2D" parent="gameover"]
+stream = ExtResource("2_683ua")
+
+[node name="Label" type="Label" parent="gameover"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.5
+offset_top = -140.0
+offset_right = 182.5
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_ubi1m")
+
+[node name="GridContainer" type="GridContainer" parent="gameover"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -185.0
+offset_right = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Retry" type="Button" parent="gameover/GridContainer"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Menu" type="Button" parent="gameover/GridContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="gameover/GridContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[connection signal="pressed" from="gameover/GridContainer/Retry" to="gameover" method="_on_retry_pressed"]
+[connection signal="pressed" from="gameover/GridContainer/Menu" to="gameover" method="_on_menu_pressed"]
+[connection signal="pressed" from="gameover/GridContainer/Quit" to="gameover" method="_on_quit_pressed"]

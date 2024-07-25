@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://w3sjmjtbweqh"]
+
+[ext_resource type="Texture2D" uid="uid://g6f7ueuskl8b" path="res://Sprites/wood-barrier.png" id="1_culfq"]
+[ext_resource type="Script" path="res://scripts/wood_barrier.cs" id="1_ghrqg"]
+[ext_resource type="AudioStream" uid="uid://blv7nlm6rqqpu" path="res://music/8-bit-explosion-95847.wav" id="3_yah6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th148"]
+atlas = ExtResource("1_culfq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj4jb"]
+atlas = ExtResource("1_culfq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxf07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th148")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj4jb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tbl6"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_othov"]
+radius = 29.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_cs1i0"]
+font_size = 10
+font_color = Color(0.876268, 0.0632836, 0.0376731, 1)
+shadow_color = Color(0, 0, 0, 0.392157)
+
+[node name="wood-barrier" type="Node2D"]
+script = ExtResource("1_ghrqg")
+
+[node name="boxsprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oxf07")
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="block" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 31
+visibility_layer = 31
+shape = SubResource("RectangleShape2D_2tbl6")
+one_way_collision_margin = 0.0
+
+[node name="demolition" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="interaction" type="CollisionShape2D" parent="demolition"]
+shape = SubResource("CircleShape2D_othov")
+
+[node name="warning" type="Label" parent="demolition"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_top = -21.0
+offset_right = 66.0
+offset_bottom = 2.0
+grow_horizontal = 2
+text = "You need acid to break this"
+label_settings = SubResource("LabelSettings_cs1i0")
+
+[node name="break" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yah6u")
+area_mask = 65535
+
+[connection signal="body_entered" from="demolition" to="." method="_on_demolition_body_entered"]
