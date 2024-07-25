@@ -62,4 +62,8 @@ public partial class player : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+
+
+
+
 }

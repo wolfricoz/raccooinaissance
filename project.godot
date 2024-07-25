@@ -11,17 +11,15 @@ config_version=5
 [application]
 
 config/name="Raccoonnaissance"
-run/main_scene="res://game.tscn"
+run/main_scene="res://start_screen.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://GameManager.cs"
-Game="res://game.tscn"
 CustomSignals="*res://scripts/customsignals/CustomSignals.cs"
-BackgroundMusic="*res://scenes/background_music.tscn"
-Gameover="*res://scenes/gameover.tscn"
+BackgroundMusic="*res://scenes/music/background_music.tscn"
 
 [display]
 

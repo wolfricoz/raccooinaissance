@@ -10,10 +10,10 @@ public partial class GameManager : Node2D
     public bool IsPaused;
     public bool IsInventoryOpen = false;
     public string CurrentScene = "res://scenes/ui.tscn";
-    public PackedScene GameScene = GD.Load<PackedScene>("res://game.tscn");
+    public int CurrentLevel = 1;
     public Dictionary<string, int> Inventory = new Dictionary<string, int>();
     public bool IsHidden;
-    public bool GameOver;
+    public bool GameOver = false;
     public Vector2 StartPosition;
 
 
@@ -35,6 +35,7 @@ public partial class GameManager : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        OnGameOver();
     }
 
 
@@ -48,8 +49,14 @@ public partial class GameManager : Node2D
 
         CurrentScene = scene;
         GD.Print("Changing to scene: " + CurrentScene);
-        this.GetTree().ChangeSceneToFile(CurrentScene);
+        ResetInventory();
+        GameOver = false;
+        IsInventoryOpen = false;
+        IsPaused = false;
+        this.GetTree().ChangeSceneToFile(scene);
+
     }
+
 
     public void ChangePreviousScene()
     {
@@ -93,5 +100,19 @@ public partial class GameManager : Node2D
             return true;
         }
         return false;
+    }
+
+    public void ResetInventory()
+    {
+        Inventory.Clear();
+    }
+
+    public void OnGameOver()
+    {
+        if (!GameOver)
+        {
+            return;
+        }
+        ChangeScene("res://scenes/UI/GameOver.tscn", false);
     }
 }

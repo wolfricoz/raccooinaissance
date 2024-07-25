@@ -9,8 +9,7 @@ public partial class human : CharacterBody2D
 	public override void _Ready()
 	{
 		GD.Print("Human preparing");
-		_player = GetNode<player>("/root/Game/player");
-		GD.Print("Human Ready: " + _player.Name);
+		GD.Print("Human Ready: " + this.Name);
 		_customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 	}
 
@@ -23,7 +22,7 @@ public partial class human : CharacterBody2D
 	{
 		if (body is player && !GameManager.Singleton.IsHidden)
 		{
-
+			_player = (player)body;
 			SightCheck();
 		}
 	}
@@ -38,9 +37,7 @@ public partial class human : CharacterBody2D
 		if (collider.Name == _player.Name)
 		{
 			GD.Print("Player seen");
-			_player.Position = GameManager.Singleton.StartPosition;
-			GetNode<AudioStreamPlayer2D>("/root/Gameover").Play();
-			_customSignals.EmitSignal(nameof(CustomSignals.Reset));
+			GameManager.Singleton.GameOver = true;
 		}
 		else {
 			GD.Print("Player not seen, line of sight blocked by: " + collider.Name);

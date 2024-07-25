@@ -17,8 +17,9 @@ public partial class ui : CanvasLayer
 
 	private void _on_start_button_pressed()
 	{
-		this.Hide();
-		// GameManager.Singleton.ChangeScene("res://game.tscn");
+		// this.Hide();
+		GameManager.Singleton.ChangeScene("res://scenes/levels/level_" + GameManager.Singleton.CurrentLevel.ToString() + ".tscn");
+		GD.Print("Start Button Pressed");
 		// Input.MouseMode = Input.MouseModeEnum.Hidden;
 	}
 }

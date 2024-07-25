@@ -15,7 +15,11 @@ public partial class dumpster : Node2D
 	public override void _Ready()
 	{
 		_customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-		_customSignals.AddToDumpster += AddToDumpsterInventory;
+
+		if (this.HasMeta("inventory"))
+		{
+			LoadInventory();
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +29,7 @@ public partial class dumpster : Node2D
 		{
 			return;
 		}
+
 		_time += 1 * delta;
 		if (_time > 5)
 		{
@@ -74,12 +79,19 @@ public partial class dumpster : Node2D
 		GameManager.Singleton.IsHidden = false;
 	}
 
-	public void AddToDumpsterInventory(string item, string name)
+	// public void AddToDumpsterInventory(string item, string name)
+	// {
+	// 	if (this.Name != name)
+	// 	{
+	// 		return;
+	// 	}
+	//
+	// 	_inventory.Add(item.ToLower());
+	// }
+
+	public void LoadInventory()
 	{
-		if (this.Name != name)
-		{
-			return;
-		}
-		_inventory.Add(item.ToLower());
+		var meta = (string)this.GetMeta("inventory");
+		_inventory = meta.Split(", ").ToList();
 	}
 }

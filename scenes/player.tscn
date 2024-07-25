@@ -88,3 +88,6 @@ frame_progress = 0.889524
 position = Vector2(-1.00077, -0.485494)
 rotation = -1.57819
 shape = SubResource("RectangleShape2D_ujetl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
