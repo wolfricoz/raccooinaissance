@@ -5,7 +5,9 @@ public partial class wood_barrier : Node2D
 {
 	private double _timer;
 	private Label _label;
+
 	private AudioStreamPlayer2D _breakSound;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -20,13 +22,13 @@ public partial class wood_barrier : Node2D
 		{
 			return;
 		}
+
 		_timer += delta;
 		if (_timer > 3)
 		{
 			_label.Visible = false;
 			_timer = 0;
 		}
-
 	}
 
 	private void _on_demolition_body_entered(Node2D body)
@@ -36,6 +38,7 @@ public partial class wood_barrier : Node2D
 		{
 			return;
 		}
+
 		if (!GameManager.Singleton.CheckIfItemInInventory("acid"))
 		{
 			_label.Visible = true;
@@ -46,9 +49,7 @@ public partial class wood_barrier : Node2D
 		boxsprite.Animation = "broken";
 		_breakSound.Play();
 
-		this.GetNode<CollisionShape2D>("demolition/interaction").Disabled = true;
-		this.GetNode<CollisionShape2D>("StaticBody2D/block").Disabled = true;
-		this.RemoveChild(this.GetNode("StaticBody2D"));
-		this.RemoveChild(this.GetNode("demolition"));
+		this.GetNode<CollisionShape2D>("demolition/interaction").CallDeferred("set_disabled", true);
+		this.GetNode<CollisionShape2D>("StaticBody2D/block").CallDeferred("set_disabled", true);
 	}
 }

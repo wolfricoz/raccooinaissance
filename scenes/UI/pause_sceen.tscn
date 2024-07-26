@@ -113,7 +113,7 @@ label_settings = SubResource("LabelSettings_36ha8")
 
 [node name="VolumeSlider" type="HSlider" parent="settings/GridContainer"]
 layout_mode = 2
-min_value = -50.0
+min_value = -40.0
 max_value = 10.0
 rounded = true
 

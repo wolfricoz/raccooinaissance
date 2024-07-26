@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace Raccoonnaissance.scripts.levels;
 
 public partial class level_1 : Node2D
 {

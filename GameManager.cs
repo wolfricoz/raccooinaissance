@@ -38,9 +38,23 @@ public partial class GameManager : Node2D
         OnGameOver();
     }
 
+    public void LoadLevel(int levelId = -1)
+    {
+        if (levelId != -1)
+        {
+            CurrentLevel = levelId;
+        }
+
+        GD.Print("Loading Level");
+        ChangeScene("res://scenes/levels/level_" + CurrentLevel.ToString() + ".tscn");
+    }
+
+
+
 
     public void ChangeScene(string scene, bool savePrevious = true)
     {
+        GD.Print("Changing scene: start");
         if (savePrevious)
         {
             GD.Print("Saving previous scene: " + CurrentScene);
@@ -48,13 +62,12 @@ public partial class GameManager : Node2D
         }
 
         CurrentScene = scene;
-        GD.Print("Changing to scene: " + CurrentScene);
         ResetInventory();
         GameOver = false;
         IsInventoryOpen = false;
         IsPaused = false;
+        GetTree().Paused = false;
         this.GetTree().ChangeSceneToFile(scene);
-
     }
 
 
@@ -92,6 +105,7 @@ public partial class GameManager : Node2D
             }
         }
     }
+
     public bool CheckIfItemInInventory(string item)
     {
         item = item.ToLower();
@@ -99,6 +113,7 @@ public partial class GameManager : Node2D
         {
             return true;
         }
+
         return false;
     }
 
@@ -113,6 +128,7 @@ public partial class GameManager : Node2D
         {
             return;
         }
+
         ChangeScene("res://scenes/UI/GameOver.tscn", false);
     }
 }
