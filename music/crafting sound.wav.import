@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://di3bpjp7765ne"
-path="res://.godot/imported/glass-clink-11-188131.wav-628579057cde34b387fcacf372e8bcde.sample"
+path="res://.godot/imported/crafting sound.wav-894c168ea1c622c5ba68d23544b53631.sample"
 
 [deps]
 
-source_file="res://music/glass-clink-11-188131.wav"
-dest_files=["res://.godot/imported/glass-clink-11-188131.wav-628579057cde34b387fcacf372e8bcde.sample"]
+source_file="res://music/crafting sound.wav"
+dest_files=["res://.godot/imported/crafting sound.wav-894c168ea1c622c5ba68d23544b53631.sample"]
 
 [params]
 

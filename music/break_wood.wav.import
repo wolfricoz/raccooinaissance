@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://df516jnnnfftd"
-path="res://.godot/imported/wood-smash-2-170417.wav-2a3e6d7e8bc85171913888e3217c19a6.sample"
+path="res://.godot/imported/break_wood.wav-e15c559e1d92e01e44b9456daab37b25.sample"
 
 [deps]
 
-source_file="res://music/wood-smash-2-170417.wav"
-dest_files=["res://.godot/imported/wood-smash-2-170417.wav-2a3e6d7e8bc85171913888e3217c19a6.sample"]
+source_file="res://music/break_wood.wav"
+dest_files=["res://.godot/imported/break_wood.wav-e15c559e1d92e01e44b9456daab37b25.sample"]
 
 [params]
 

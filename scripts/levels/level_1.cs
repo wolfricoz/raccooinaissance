@@ -18,7 +18,6 @@ public partial class level_1 : Node2D
 		var dumpster2 = this.GetNode("dumpster2");
 		GD.Print(dumpster);
 		GD.Print(dumpster.IsInsideTree());
-		GameManager.Singleton.AddToInventory("acid");
 		GameManager.Singleton.StartPosition = this.GetNode<Node2D>("start").GlobalPosition;
 		GD.Print("Level One Ready");
 	}

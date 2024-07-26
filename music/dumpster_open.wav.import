@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dwsnv38irkjk6"
-path="res://.godot/imported/metal-slam-5-189786.wav-6f2c90d5ee6895fe0919369fc628ef94.sample"
+path="res://.godot/imported/dumpster_open.wav-913b623b1fc60648d9fd034782e3bd0f.sample"
 
 [deps]
 
-source_file="res://music/metal-slam-5-189786.wav"
-dest_files=["res://.godot/imported/metal-slam-5-189786.wav-6f2c90d5ee6895fe0919369fc628ef94.sample"]
+source_file="res://music/dumpster_open.wav"
+dest_files=["res://.godot/imported/dumpster_open.wav-913b623b1fc60648d9fd034782e3bd0f.sample"]
 
 [params]
 

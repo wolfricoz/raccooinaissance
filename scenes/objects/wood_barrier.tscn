@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://g6f7ueuskl8b" path="res://Sprites/wood-barrier.png" id="1_culfq"]
 [ext_resource type="Script" path="res://scripts/wood_barrier.cs" id="1_ghrqg"]
-[ext_resource type="AudioStream" uid="uid://blv7nlm6rqqpu" path="res://music/8-bit-explosion-95847.wav" id="3_yah6u"]
+[ext_resource type="AudioStream" uid="uid://df516jnnnfftd" path="res://music/break_wood.wav" id="3_ewrwy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th148"]
 atlas = ExtResource("1_culfq")
@@ -80,7 +80,7 @@ text = "You need acid to break this"
 label_settings = SubResource("LabelSettings_cs1i0")
 
 [node name="break" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_yah6u")
+stream = ExtResource("3_ewrwy")
 area_mask = 65535
 
 [connection signal="body_entered" from="demolition" to="." method="_on_demolition_body_entered"]

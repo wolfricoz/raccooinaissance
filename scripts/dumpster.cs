@@ -8,6 +8,7 @@ public partial class dumpster : Node2D
 	private double _time;
 	private List<string> _inventory = new List<string>();
 	private CustomSignals _customSignals;
+	private AudioStreamPlayer2D _openSound;
 
 	private Label _label;
 
@@ -20,6 +21,8 @@ public partial class dumpster : Node2D
 		{
 			LoadInventory();
 		}
+
+		_openSound = GetNode<AudioStreamPlayer2D>("OpenSound");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,8 +55,6 @@ public partial class dumpster : Node2D
 		{
 			return;
 		}
-
-		GD.Print("Looting");
 		foreach (string item in _inventory)
 		{
 			if (GameManager.Singleton.Inventory.ContainsKey(item))
@@ -72,6 +73,7 @@ public partial class dumpster : Node2D
 		_label.Text = "You found: " + string.Join(", ", _inventory);
 		_label.Rotation = -this.Rotation;
 		this.AddChild(_label);
+		_openSound.Play();
 	}
 
 	private void _on_area_2d_body_exited(Node2D body)
@@ -79,15 +81,6 @@ public partial class dumpster : Node2D
 		GameManager.Singleton.IsHidden = false;
 	}
 
-	// public void AddToDumpsterInventory(string item, string name)
-	// {
-	// 	if (this.Name != name)
-	// 	{
-	// 		return;
-	// 	}
-	//
-	// 	_inventory.Add(item.ToLower());
-	// }
 
 	public void LoadInventory()
 	{
