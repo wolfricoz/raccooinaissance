@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccp8lciw3lfkq"]
+[gd_scene load_steps=6 format=3 uid="uid://ccp8lciw3lfkq"]
 
 [ext_resource type="Script" path="res://scripts/inventory.cs" id="1_ankq7"]
+[ext_resource type="AudioStream" uid="uid://di3bpjp7765ne" path="res://music/crafting sound.wav" id="2_6tptc"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7s7oa"]
 specular_color = Color(0.808961, 0.582129, 0.480978, 1)
@@ -105,6 +106,10 @@ text = "Wood eating Acid"
 
 [node name="acidrequirements" type="Label" parent="GridContainer2"]
 layout_mode = 2
+
+[node name="CraftingSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(400, 63)
+stream = ExtResource("2_6tptc")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -58,11 +58,12 @@ layer_0/tile_data = PackedInt32Array(1966103, 1, 0, 1966104, 1, 0, 1966105, 1, 0
 
 [node name="dumpster" parent="." instance=ExtResource("4_12rjc")]
 position = Vector2(737, 308)
-metadata/inventory = "acid a, knife"
+metadata/inventory = "acid a"
 
 [node name="dumpster2" parent="." instance=ExtResource("4_12rjc")]
 position = Vector2(729, 460)
 rotation = -3.14034
+metadata/inventory = "acid b"
 
 [node name="wood-barrier" parent="." instance=ExtResource("5_qcw32")]
 position = Vector2(649, 312)

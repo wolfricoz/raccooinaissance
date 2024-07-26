@@ -28,4 +28,8 @@ collision_mask = 2
 position = Vector2(0, 1)
 polygon = PackedVector2Array(64, 75, 0, 121, -64, 75, 0, -1)
 
+[node name="Polygon2D" type="Polygon2D" parent="vision"]
+color = Color(0.819608, 0.0196078, 0, 0.160784)
+polygon = PackedVector2Array(0, 0, 64, 76, 0, 122, -64, 76)
+
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/dumpster.cs" id="1_wjev0"]
 [ext_resource type="Texture2D" uid="uid://deesktvsx7dgx" path="res://Sprites/dumpster.png" id="2_mffqw"]
 [ext_resource type="Texture2D" uid="uid://12vsatdgnihc" path="res://Sprites/dumpster-closed.png" id="3_bxay4"]
-[ext_resource type="AudioStream" uid="uid://dwsnv38irkjk6" path="res://music/metal-slam-5-189786.wav" id="4_gg6hr"]
+[ext_resource type="AudioStream" uid="uid://dwsnv38irkjk6" path="res://music/dumpster_open.wav" id="4_gg6hr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2srin"]
 size = Vector2(125, 68)

@@ -25,6 +25,7 @@ texture = SubResource("CanvasTexture_8861j")
 
 [node name="gameoversound" type="AudioStreamPlayer2D" parent="gameover"]
 stream = ExtResource("2_683ua")
+autoplay = true
 
 [node name="Label" type="Label" parent="gameover"]
 anchors_preset = 8
