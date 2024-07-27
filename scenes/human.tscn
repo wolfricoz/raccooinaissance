@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syv3o"]
 size = Vector2(32, 12)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Human" type="CharacterBody2D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_b1a86")
@@ -33,3 +33,4 @@ color = Color(0.819608, 0.0196078, 0, 0.160784)
 polygon = PackedVector2Array(0, 0, 64, 76, 0, 122, -64, 76)
 
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="vision" to="." method="_on_vision_body_exited"]

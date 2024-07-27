@@ -14,10 +14,6 @@ public partial class level_1 : Node2D
 	{
 		GD.Print("Level One Loading");
 		_customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-		var dumpster = this.GetNode("dumpster");
-		var dumpster2 = this.GetNode("dumpster2");
-		GD.Print(dumpster);
-		GD.Print(dumpster.IsInsideTree());
 		GameManager.Singleton.StartPosition = this.GetNode<Node2D>("start").GlobalPosition;
 		GD.Print("Level One Ready");
 	}
@@ -25,8 +21,6 @@ public partial class level_1 : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		var path = GetNode<PathFollow2D>("Path2D/PathFollow2D");
-		path.ProgressRatio += _speed * (float)delta;
 
 	}
 

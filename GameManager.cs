@@ -49,7 +49,11 @@ public partial class GameManager : Node2D
         ChangeScene("res://scenes/levels/level_" + CurrentLevel.ToString() + ".tscn");
     }
 
-
+    public void LoadNextLevel()
+    {
+        CurrentLevel += 1;
+        LoadLevel();
+    }
 
 
     public void ChangeScene(string scene, bool savePrevious = true)

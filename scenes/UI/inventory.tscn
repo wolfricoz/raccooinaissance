@@ -108,6 +108,7 @@ text = "Wood eating Acid"
 layout_mode = 2
 
 [node name="CraftingSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 position = Vector2(400, 63)
 stream = ExtResource("2_6tptc")
 

@@ -84,3 +84,4 @@ stream = ExtResource("3_ewrwy")
 area_mask = 65535
 
 [connection signal="body_entered" from="demolition" to="." method="_on_demolition_body_entered"]
+[connection signal="body_exited" from="demolition" to="." method="_on_demolition_body_exited"]

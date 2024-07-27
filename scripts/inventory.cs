@@ -23,6 +23,7 @@ public partial class inventory : CanvasLayer
 		{
 			GD.Print("Inventory State Changed");
 			this.Visible = GameManager.Singleton.IsInventoryOpen;
+			GetTree().Paused = GameManager.Singleton.IsInventoryOpen;
 
 		}
 	}
