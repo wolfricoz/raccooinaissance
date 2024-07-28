@@ -15,7 +15,7 @@ public partial class gameover : CanvasLayer
 
 	private void _on_retry_pressed()
 	{
-		GameManager.Singleton.ChangeScene("res://scenes/levels/level_" + GameManager.Singleton.CurrentLevel.ToString() + ".tscn");
+		GameManager.Singleton.ChangePreviousScene();
 	}
 
 

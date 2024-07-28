@@ -10,11 +10,10 @@ public partial class GameManager : Node2D
     public bool IsPaused;
     public bool IsInventoryOpen = false;
     public string CurrentScene = "res://scenes/ui.tscn";
-    public int CurrentLevel = 1;
+    private int _currentLevel = 1;
     public Dictionary<string, int> Inventory = new Dictionary<string, int>();
     public bool IsHidden;
     public bool GameOver = false;
-    public Vector2 StartPosition;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -36,22 +35,25 @@ public partial class GameManager : Node2D
     public override void _Process(double delta)
     {
         OnGameOver();
+        GD.Print(IsHidden);
     }
 
     public void LoadLevel(int levelId = -1)
     {
         if (levelId != -1)
         {
-            CurrentLevel = levelId;
+            GD.Print("Loading Level: " + levelId);
+            _currentLevel = levelId;
+            GD.Print("Current Level: " + _currentLevel);
         }
 
         GD.Print("Loading Level");
-        ChangeScene("res://scenes/levels/level_" + CurrentLevel.ToString() + ".tscn");
+        ChangeScene("res://scenes/levels/level_" + _currentLevel.ToString() + ".tscn");
     }
 
     public void LoadNextLevel()
     {
-        CurrentLevel += 1;
+        CurrentLevel(_currentLevel + 1);
         LoadLevel();
     }
 
@@ -133,6 +135,18 @@ public partial class GameManager : Node2D
             return;
         }
 
-        ChangeScene("res://scenes/UI/GameOver.tscn", false);
+        ChangeScene("res://scenes/UI/GameOver.tscn");
     }
+
+        public int CurrentLevel(int value = -1)
+    {
+        if (value == -1)
+        {
+            return _currentLevel;
+        }
+        GD.Print($"Changing CurrentLevel from {_currentLevel} to {value}");
+        _currentLevel = value;
+        return _currentLevel;
+    }
+
 }

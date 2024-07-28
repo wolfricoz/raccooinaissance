@@ -14,7 +14,6 @@ public partial class level_1 : Node2D
 	{
 		GD.Print("Level One Loading");
 		_customSignals = GetNode<CustomSignals>("/root/CustomSignals");
-		GameManager.Singleton.StartPosition = this.GetNode<Node2D>("start").GlobalPosition;
 		GD.Print("Level One Ready");
 	}
 

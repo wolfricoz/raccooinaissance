@@ -71,8 +71,8 @@ size = Vector2(9.0142, 11.9715)
 
 [node name="player" type="CharacterBody2D"]
 rotation = -1.56625
-collision_layer = 7
-collision_mask = 7
+collision_layer = 32775
+collision_mask = 32775
 script = ExtResource("1_aqlqq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
