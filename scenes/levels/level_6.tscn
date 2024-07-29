@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://tqg6mp568ann"]
+[gd_scene load_steps=18 format=3 uid="uid://tqg6mp568ann"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_6.cs" id="1_ccej3"]
 [ext_resource type="Texture2D" uid="uid://bu22ptw1vcrl7" path="res://Sprites/street.png" id="2_2pg4y"]
@@ -56,6 +56,8 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_k4lo0"]
+
 [node name="level_6" type="Node2D"]
 position = Vector2(-1, 0)
 script = ExtResource("1_ccej3")
@@ -78,14 +80,12 @@ rotation = 1.56641
 visible = false
 
 [node name="InstructionsLabel" type="Label" parent="."]
-visible = false
-offset_left = 489.0
-offset_top = 497.0
-offset_right = 742.0
-offset_bottom = 520.0
-text = "Alright, Ricky.
-Use the walls to hide from the human. 
-If he spots you, your mission is over."
+offset_left = 753.0
+offset_top = 337.0
+offset_right = 1013.0
+offset_bottom = 370.0
+text = "Agent, avoid the cars
+And get the cookies."
 label_settings = ExtResource("6_bcmpb")
 
 [node name="VentLabel" type="Label" parent="."]
@@ -150,3 +150,16 @@ progress = 363.0
 [node name="Vehicle2" parent="right/PathFollow2D" instance=ExtResource("10_3n276")]
 position = Vector2(0, -2.67029e-05)
 rotation = -4.71238
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16384
+collision_mask = 16384
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(650, 434)
+shape = SubResource("WorldBoundaryShape2D_k4lo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(647, 143)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_k4lo0")

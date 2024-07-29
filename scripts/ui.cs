@@ -17,9 +17,8 @@ public partial class ui : CanvasLayer
 
 	private void _on_start_button_pressed()
 	{
-
 		// this.Hide();
 		GD.Print("Start Button Pressed");
-		GameManager.Singleton.LoadLevel(6);
+		GameManager.Singleton.LoadLevel(7);
 	}
 }
