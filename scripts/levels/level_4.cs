@@ -4,7 +4,7 @@ using System;
 
 public partial class level_4 : Node2D
 {
-	private int _levelNumber = 3;
+	private int _levelNumber = 4;
 	private CustomSignals _customSignals;
 	private CharacterBody2D _human1;
 	private float _speed = 0.1f;

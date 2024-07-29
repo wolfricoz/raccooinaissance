@@ -1,13 +1,11 @@
 using Godot;
 using System;
 
-public partial class ui : CanvasLayer
+public partial class vehicle : Area2D
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		// this.Show();
-		Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,11 +13,13 @@ public partial class ui : CanvasLayer
 	{
 	}
 
-	private void _on_start_button_pressed()
+	private void _on_body_entered(Node2D body)
 	{
-
-		// this.Hide();
-		GD.Print("Start Button Pressed");
-		GameManager.Singleton.LoadLevel(6);
+	GD.Print("Vehicle Hit");
+		if (body is not CharacterBody2D)
+		{
+			return;
+		}
+		GameManager.Singleton.GameOver = true;
 	}
 }

@@ -1,14 +1,13 @@
 using Godot;
 using System;
 
-public partial class level_5 : Node2D
+public partial class level_6 : Node2D
 {
-	private int _levelNumber = 5;
+	private int _levelNumber = 6;
 	private CustomSignals _customSignals;
-	private CharacterBody2D _human;
-	private PathFollow2D _bigpath;
-	private PathFollow2D _smallpath;
-	private float _speed = 0.03f;
+	private PathFollow2D _right;
+	private PathFollow2D _left;
+	private float _speed = 0.5f;
 	private float _rotate = 50f;
 
 
@@ -17,17 +16,16 @@ public partial class level_5 : Node2D
 		GD.Print("Level One Loading");
 		_customSignals = GetNode<CustomSignals>("/root/CustomSignals");
 		GD.Print("Level One Ready");
-		_human = GetNode<CharacterBody2D>("Human_3");
-		_bigpath = GetNode<PathFollow2D>("bigroompath/PathFollow2D");
-		_smallpath = GetNode<PathFollow2D>("smallpath/PathFollow2D");
+		_right = GetNode<PathFollow2D>("right/PathFollow2D");
+		_left = GetNode<PathFollow2D>("left/PathFollow2D");
 	}
 
 // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		FollowPath(_bigpath, _speed, delta);
-		FollowPath(_smallpath, _speed, delta);
-		RotateHuman(_human, delta, 120, 280);
+
+		FollowPath(_left, _speed, delta);
+		FollowPath(_right, _speed, delta);
 	}
 
 	private void RotateHuman(CharacterBody2D human,double delta, int min, int max)

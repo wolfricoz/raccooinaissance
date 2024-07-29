@@ -67,9 +67,9 @@ scale = Vector2(0.931872, 0.931872)
 curve = SubResource("Curve2D_ncn0b")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="bigroompath"]
-position = Vector2(565.287, 33.3712)
-rotation = -2.12569
-progress = 1436.98
+position = Vector2(546.796, 3.03771)
+rotation = -2.11069
+progress = 1472.5
 
 [node name="Human_2" parent="bigroompath/PathFollow2D" instance=ExtResource("4_n47rq")]
 position = Vector2(-7.62939e-06, 4.57764e-05)
@@ -202,13 +202,13 @@ scale = Vector2(0.931872, 0.931872)
 curve = SubResource("Curve2D_v3rmf")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="smallpath"]
-position = Vector2(565.528, 34.3394)
-rotation = 0.057906
-progress = 1436.98
+position = Vector2(772.825, -86.5582)
+rotation = -1.5961
+progress = 641.684
 
 [node name="Human_2" parent="smallpath/PathFollow2D" instance=ExtResource("4_n47rq")]
 position = Vector2(-1.07132, 0.0620851)
-rotation = 5.23599
+rotation = 4.45058
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-2, 10)
