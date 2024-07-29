@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://to4sflt5i1yw"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_4.cs" id="1_bruo1"]
+[ext_resource type="Texture2D" uid="uid://or5o4qohiu6m" path="res://Sprites/Sprite-0003-Sheet.png" id="2_ia2cq"]
+[ext_resource type="PackedScene" uid="uid://b3qu76vpjrwkf" path="res://scenes/objects/dumpster.tscn" id="3_1sm7g"]
+[ext_resource type="PackedScene" uid="uid://c4ickgailbbc6" path="res://scenes/human.tscn" id="4_5nbol"]
+[ext_resource type="PackedScene" uid="uid://u5d7fdacjj21" path="res://scenes/player.tscn" id="5_4r8e8"]
+[ext_resource type="PackedScene" uid="uid://dyf0auoeytoc7" path="res://scenes/UI/combined_ui.tscn" id="7_yb5tb"]
+[ext_resource type="LabelSettings" uid="uid://cw2eqj6dj5jrp" path="res://fonts/BasicLabels.tres" id="8_b71tx"]
+[ext_resource type="PackedScene" uid="uid://tbdcmijn0fmo" path="res://scenes/objects/finish.tscn" id="10_mwj3s"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jx7fe"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y17tu"]
+texture = ExtResource("2_ia2cq")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jx7fe")
+
+[sub_resource type="TileSet" id="TileSet_c4c4o"]
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 3
+sources/1 = SubResource("TileSetAtlasSource_y17tu")
+
+[node name="level_4" type="Node2D"]
+position = Vector2(-1, 0)
+script = ExtResource("1_bruo1")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(1, 1)
+tile_set = SubResource("TileSet_c4c4o")
+format = 2
+layer_0/tile_data = PackedInt32Array(1310760, 1, 0, 1310761, 1, 0, 1310762, 1, 0, 1310763, 1, 0, 1310764, 1, 0, 1376300, 1, 0, 1441836, 1, 0, 1507372, 1, 0, 1572908, 1, 0, 1638444, 1, 0, 1638443, 1, 0, 1638442, 1, 0, 1638441, 1, 0, 1638440, 1, 0, 1638439, 1, 0, 1638438, 1, 0, 1638437, 1, 0, 1638436, 1, 0, 1638435, 1, 0, 1572899, 1, 0, 1507363, 1, 0, 1441827, 1, 0, 1376291, 1, 0, 1310755, 1, 0, 1245219, 1, 0, 1179683, 1, 0, 1638445, 1, 0, 1638446, 1, 0, 1638447, 1, 0, 1638448, 1, 0, 1638449, 1, 0, 1638450, 1, 0, 1638451, 1, 0, 1572915, 1, 0, 1507379, 1, 0, 1441843, 1, 0, 1376307, 1, 0, 1310771, 1, 0, 1245235, 1, 0, 1179699, 1, 0, 1114163, 1, 0, 1048627, 1, 0, 1048626, 1, 0, 1048625, 1, 0, 1048624, 1, 0, 1048623, 1, 0, 1048622, 1, 0, 1048621, 1, 0, 1048620, 1, 0, 1048619, 1, 0, 1048618, 1, 0, 1048617, 1, 0, 1048616, 1, 0, 1048615, 1, 0, 1048614, 1, 0, 1048613, 1, 0, 1048612, 1, 0, 1048611, 1, 0, 1114147, 1, 0, 1572907, 65537, 0, 1507370, 65537, 0, 1507369, 65537, 0, 1507368, 65537, 0, 1441831, 65537, 0, 1441830, 65537, 0, 1441829, 65537, 0, 1441828, 65537, 0, 1376292, 65537, 0, 1507364, 65537, 0, 1572900, 65537, 0, 1376293, 65537, 0, 1507365, 65537, 0, 1572901, 65537, 0, 1376294, 65537, 0, 1507366, 65537, 0, 1572902, 65537, 0, 1376295, 65537, 0, 1507367, 65537, 0, 1572903, 65537, 0, 1376296, 65537, 0, 1441832, 65537, 0, 1572904, 65537, 0, 1376297, 65537, 0, 1441833, 65537, 0, 1572905, 65537, 0, 1376298, 65537, 0, 1441834, 65537, 0, 1572906, 65537, 0, 1376299, 65537, 0, 1441835, 65537, 0, 1507371, 65537, 0, 1114148, 65537, 0, 1179684, 65537, 0, 1245220, 65537, 0, 1310756, 65537, 0, 1114149, 65537, 0, 1179685, 65537, 0, 1245221, 65537, 0, 1310757, 65537, 0, 1114150, 65537, 0, 1179686, 65537, 0, 1245222, 65537, 0, 1310758, 65537, 0, 1114151, 65537, 0, 1179687, 65537, 0, 1245223, 65537, 0, 1310759, 65537, 0, 1114152, 65537, 0, 1179688, 65537, 0, 1245224, 65537, 0, 1114153, 65537, 0, 1179689, 65537, 0, 1245225, 65537, 0, 1114154, 65537, 0, 1179690, 65537, 0, 1245226, 65537, 0, 1114155, 65537, 0, 1179691, 65537, 0, 1245227, 65537, 0, 1114156, 65537, 0, 1179692, 65537, 0, 1245228, 65537, 0, 1114157, 65537, 0, 1179693, 65537, 0, 1245229, 65537, 0, 1114158, 65537, 0, 1179694, 65537, 0, 1245230, 65537, 0, 1114159, 65537, 0, 1179695, 65537, 0, 1245231, 65537, 0, 1114160, 65537, 0, 1179696, 65537, 0, 1245232, 65537, 0, 1114161, 65537, 0, 1179697, 65537, 0, 1245233, 65537, 0, 1114162, 65537, 0, 1179698, 65537, 0, 1245234, 65537, 0, 1310765, 65537, 0, 1376301, 65537, 0, 1441837, 65537, 0, 1507373, 65537, 0, 1572909, 65537, 0, 1310766, 65537, 0, 1376302, 65537, 0, 1441838, 65537, 0, 1507374, 65537, 0, 1572910, 65537, 0, 1310767, 65537, 0, 1376303, 65537, 0, 1441839, 65537, 0, 1507375, 65537, 0, 1572911, 65537, 0, 1310768, 65537, 0, 1376304, 65537, 0, 1441840, 65537, 0, 1507376, 65537, 0, 1572912, 65537, 0, 1310769, 65537, 0, 1376305, 65537, 0, 1441841, 65537, 0, 1507377, 65537, 0, 1572913, 65537, 0, 1310770, 65537, 0, 1376306, 65537, 0, 1441842, 65537, 0, 1507378, 65537, 0, 1572914, 65537, 0)
+
+[node name="dumpster" parent="." instance=ExtResource("3_1sm7g")]
+position = Vector2(596, 356)
+rotation = -1.5708
+metadata/inventory = "Diazepam, Saline"
+
+[node name="human_1" parent="." instance=ExtResource("4_5nbol")]
+position = Vector2(613, 298)
+rotation = 4.71239
+scale = Vector2(1.00557, 1.00557)
+motion_mode = 0
+
+[node name="player" parent="." instance=ExtResource("5_4r8e8")]
+position = Vector2(677, 362)
+rotation = 1.56641
+
+[node name="ui" parent="." instance=ExtResource("7_yb5tb")]
+
+[node name="InstructionsLabel" type="Label" parent="."]
+offset_left = 533.0
+offset_top = 405.0
+offset_right = 857.0
+offset_bottom = 444.0
+text = "Ricky, there is a human up ahead,
+To get past him, loot the dumpster
+and make a tranquilizer"
+label_settings = ExtResource("8_b71tx")
+
+[node name="VentLabel" type="Label" parent="."]
+offset_left = 509.0
+offset_top = 249.0
+offset_right = 748.0
+offset_bottom = 272.0
+text = "Move behind him to tranquilize him."
+label_settings = ExtResource("8_b71tx")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 850.0
+offset_top = 226.999
+offset_right = 933.0
+offset_bottom = 250.0
+text = "Use the bins
+to hide"
+label_settings = ExtResource("8_b71tx")
+
+[node name="finish" parent="." instance=ExtResource("10_mwj3s")]
+position = Vector2(761, 345)

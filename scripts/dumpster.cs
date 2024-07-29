@@ -57,14 +57,7 @@ public partial class dumpster : Node2D
 		}
 		foreach (string item in _inventory)
 		{
-			if (GameManager.Singleton.Inventory.ContainsKey(item))
-			{
-				GameManager.Singleton.Inventory[item] += 1;
-			}
-			else
-			{
-				GameManager.Singleton.Inventory.Add(item, 1);
-			}
+			GameManager.Singleton.AddToInventory(item);
 		}
 
 		IsLooted = true;

@@ -35,7 +35,6 @@ public partial class GameManager : Node2D
     public override void _Process(double delta)
     {
         OnGameOver();
-        GD.Print(IsHidden);
     }
 
     public void LoadLevel(int levelId = -1)

@@ -7,11 +7,11 @@ using Godot.Collections;
 public partial class inventory : CanvasLayer
 {
 	private AudioStreamPlayer2D _craftingSound;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		GD.Print("Inventory Ready");
-		this.GetNode<Label>("GridContainer2/acidrequirements").Text = "Acid A: 1 Acid B: 1";
 		_craftingSound = GetNode<AudioStreamPlayer2D>("CraftingSound");
 	}
 
@@ -24,7 +24,6 @@ public partial class inventory : CanvasLayer
 			GD.Print("Inventory State Changed");
 			this.Visible = GameManager.Singleton.IsInventoryOpen;
 			GetTree().Paused = GameManager.Singleton.IsInventoryOpen;
-
 		}
 	}
 
@@ -52,6 +51,8 @@ public partial class inventory : CanvasLayer
 		GD.Print(GameManager.Singleton.Inventory);
 		DeleteChildren();
 		var craftacid = this.GetNode<Button>("GridContainer2/acidbutton");
+		var crafttranquilizer = this.GetNode<Button>("GridContainer2/TranquilizerButton");
+
 		Theme theme = new Theme();
 		StyleBoxFlat disabledbutton = new StyleBoxFlat();
 		disabledbutton.BgColor = new Color(0.5f, 0.5f, 0.5f); // Grey color
@@ -61,6 +62,8 @@ public partial class inventory : CanvasLayer
 		theme.SetStylebox("panel", "CanvasLayer", disabledbutton);
 		craftacid.Disabled = true;
 		craftacid.Theme = theme;
+		crafttranquilizer.Disabled = true;
+		crafttranquilizer.Theme = theme;
 		foreach (KeyValuePair<string, int> item in GameManager.Singleton.Inventory)
 		{
 			var label = new Label();
@@ -70,12 +73,20 @@ public partial class inventory : CanvasLayer
 		}
 
 		if (GameManager.Singleton.Inventory.ContainsKey("acid a") &&
-			GameManager.Singleton.Inventory.ContainsKey("acid a"))
+			GameManager.Singleton.Inventory.ContainsKey("acid b"))
 		{
 			craftacid.Disabled = false;
 
 			theme.SetStylebox("panel", "CanvasLayer", enabledbutton);
 			craftacid.Theme = theme;
+		}
+
+		if (GameManager.Singleton.Inventory.ContainsKey("diazepam") &&
+			GameManager.Singleton.Inventory.ContainsKey("saline"))
+		{
+			crafttranquilizer.Disabled = false;
+			theme.SetStylebox("panel", "CanvasLayer", enabledbutton);
+			crafttranquilizer.Theme = theme;
 		}
 	}
 
@@ -100,6 +111,19 @@ public partial class inventory : CanvasLayer
 			GameManager.Singleton.RemoveFromInventory("acid a");
 			GameManager.Singleton.RemoveFromInventory("acid b");
 			GameManager.Singleton.AddToInventory("acid");
+			_craftingSound.Play();
+			UpdateInventory();
+		}
+	}
+
+	private void _on_tranquilizer_button_pressed()
+	{
+		if (GameManager.Singleton.Inventory.ContainsKey("diazepam") &&
+			GameManager.Singleton.Inventory.ContainsKey("saline"))
+		{
+			GameManager.Singleton.RemoveFromInventory("Diazepam");
+			GameManager.Singleton.RemoveFromInventory("Saline");
+			GameManager.Singleton.AddToInventory("Tranquilizer");
 			_craftingSound.Play();
 			UpdateInventory();
 		}

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccp8lciw3lfkq"]
+[gd_scene load_steps=9 format=3 uid="uid://ccp8lciw3lfkq"]
 
 [ext_resource type="Script" path="res://scripts/inventory.cs" id="1_ankq7"]
 [ext_resource type="AudioStream" uid="uid://di3bpjp7765ne" path="res://music/crafting sound.wav" id="2_6tptc"]
+[ext_resource type="FontFile" uid="uid://b20a87dv5c7ln" path="res://fonts/slkscr.ttf" id="2_ewg0a"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7s7oa"]
 specular_color = Color(0.808961, 0.582129, 0.480978, 1)
@@ -11,6 +12,11 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_fxxxh"]
 font_color = Color(0.129558, 0.129558, 0.129558, 1)
+
+[sub_resource type="Theme" id="Theme_33jm6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gxlvd"]
+font = ExtResource("2_ewg0a")
 
 [node name="inventory" type="CanvasLayer"]
 script = ExtResource("1_ankq7")
@@ -105,7 +111,22 @@ layout_mode = 2
 text = "Wood eating Acid"
 
 [node name="acidrequirements" type="Label" parent="GridContainer2"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme = SubResource("Theme_33jm6")
+text = "Acid A: 1 Acid B: 1"
+label_settings = SubResource("LabelSettings_gxlvd")
+
+[node name="TranquilizerButton" type="Button" parent="GridContainer2"]
+layout_mode = 2
+text = "Tranquilizer"
+
+[node name="TranquilizerRequirements" type="Label" parent="GridContainer2"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_33jm6")
+text = "Diazepam: 1, Saline: 1"
+label_settings = SubResource("LabelSettings_gxlvd")
 
 [node name="CraftingSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
@@ -115,3 +136,4 @@ stream = ExtResource("2_6tptc")
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GridContainer2/acidbutton" to="." method="_on_acidbutton_pressed"]
+[connection signal="pressed" from="GridContainer2/TranquilizerButton" to="." method="_on_tranquilizer_button_pressed"]

@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 
-public partial class level_3 : Node2D
+public partial class level_4 : Node2D
 {
 	private int _levelNumber = 3;
 	private CustomSignals _customSignals;
@@ -22,8 +22,8 @@ public partial class level_3 : Node2D
 // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		FollowPath(GetNode<PathFollow2D>("Path2D/PathFollow2D"), delta);
-		RotateHuman(delta);
+		// FollowPath(GetNode<PathFollow2D>("Path2D/PathFollow2D"), delta);
+		// RotateHuman(delta);
 	}
 
 	private void RotateHuman(double delta)
