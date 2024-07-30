@@ -7,8 +7,8 @@ public partial class level_4 : Node2D
 	private int _levelNumber = 4;
 	private CustomSignals _customSignals;
 	private CharacterBody2D _human1;
-	private float _speed = 0.1f;
-	private float _rotate = 50f;
+	private float _speed = GameManager.Singleton.HumanSpeed;
+	private float _rotate = 30f;
 
 
 	public override void _Ready()
@@ -31,12 +31,12 @@ public partial class level_4 : Node2D
 		_human1.RotationDegrees += _rotate * (float)delta;
 		if (_human1.RotationDegrees >= 240)
 		{
-			_rotate = -50;
+			_rotate = -30;
 		}
 
 		if (_human1.RotationDegrees <= 90)
 		{
-			_rotate = 50;
+			_rotate = 30;
 		}
 	}
 

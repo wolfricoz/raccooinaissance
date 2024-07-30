@@ -31,8 +31,8 @@ public partial class level_8 : Node2D
 		_rotatingHuman2 = GetNode<CharacterBody2D>("Human2");
 
 		// Initialize rotation values for each human
-		_rotateDict[_rotatingHuman] = 50f;
-		_rotateDict[_rotatingHuman2] = 50f;
+		_rotateDict[_rotatingHuman] = 30f;
+		_rotateDict[_rotatingHuman2] = 30f;
 	}
 
 	public override void _Process(double delta)

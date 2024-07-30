@@ -8,8 +8,8 @@ public partial class level_5 : Node2D
 	private CharacterBody2D _human;
 	private PathFollow2D _bigpath;
 	private PathFollow2D _smallpath;
-	private float _speed = 0.03f;
-	private float _rotate = 50f;
+	private float _speed = GameManager.Singleton.HumanSpeed;
+	private float _rotate = 30f;
 
 
 	public override void _Ready()

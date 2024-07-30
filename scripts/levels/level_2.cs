@@ -7,8 +7,8 @@ public partial class level_2 : Node2D
 	private int _levelNumber = 2;
 	private CustomSignals _customSignals;
 	private CharacterBody2D _human1;
-	private float _speed = 0.05f;
-	private float _rotate = 25f;
+	private float _speed = GameManager.Singleton.HumanSpeed;
+	private float _rotate = 30f;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -31,12 +31,12 @@ public partial class level_2 : Node2D
 		_human1.RotationDegrees += _rotate * (float)delta;
 		if (_human1.RotationDegrees >= 160)
 		{
-			_rotate = -25;
+			_rotate = -30;
 		}
 
 		if (_human1.RotationDegrees <= 20)
 		{
-			_rotate = 25;
+			_rotate = 30;
 		}
 	}
 

@@ -7,8 +7,8 @@ public partial class level_6 : Node2D
 	private CustomSignals _customSignals;
 	private PathFollow2D _right;
 	private PathFollow2D _left;
-	private float _speed = 0.5f;
-	private float _rotate = 50f;
+	private float _speed = GameManager.Singleton.CarSpeed;
+	private float _rotate = 30f;
 
 
 	public override void _Ready()

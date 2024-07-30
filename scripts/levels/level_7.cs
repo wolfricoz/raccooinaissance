@@ -8,8 +8,9 @@ public partial class level_7 : Node2D
 	private PathFollow2D _human;
 	private PathFollow2D _slowHuman;
 	private PathFollow2D _car;
-	private float _speed = 0.5f;
-	private float _rotate = 50f;
+	private float _speedCar = GameManager.Singleton.CarSpeed;
+	private float _speedHuman = GameManager.Singleton.HumanSpeed;
+	private float _rotate = 30f;
 
 
 	public override void _Ready()
@@ -25,9 +26,9 @@ public partial class level_7 : Node2D
 // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		FollowPath(_human, 0.1f, delta);
-		FollowPath(_slowHuman, 0.05f, delta);
-		FollowPath(_car, _speed, delta);
+		FollowPath(_human, _speedHuman, delta);
+		FollowPath(_slowHuman, 0.025f, delta);
+		FollowPath(_car, _speedCar, delta);
 	}
 
 	private void RotateHuman(CharacterBody2D human, double delta, int min, int max)
