@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://wa2ofer63j08"]
+[gd_scene load_steps=21 format=3 uid="uid://wa2ofer63j08"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_7.cs" id="1_eshj3"]
 [ext_resource type="Texture2D" uid="uid://bu22ptw1vcrl7" path="res://Sprites/street.png" id="2_kj076"]
@@ -64,6 +64,9 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6cqjd"]
+distance = 99.0001
+
 [node name="level_7" type="Node2D"]
 position = Vector2(-1, 0)
 script = ExtResource("1_eshj3")
@@ -86,6 +89,7 @@ rotation = 1.56641
 visible = false
 
 [node name="InstructionsLabel" type="Label" parent="."]
+visible = false
 offset_left = 753.0
 offset_top = 337.0
 offset_right = 1013.0
@@ -168,3 +172,15 @@ position = Vector2(778, -247)
 
 [node name="beartrap2" parent="." instance=ExtResource("12_pgglg")]
 position = Vector2(777, -215)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1029, 50)
+rotation = -1.57079
+shape = SubResource("WorldBoundaryShape2D_6cqjd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(253, 40)
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_6cqjd")

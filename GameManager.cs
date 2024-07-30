@@ -13,7 +13,10 @@ public partial class GameManager : Node2D
     private int _currentLevel = 1;
     public Dictionary<string, int> Inventory = new Dictionary<string, int>();
     public bool IsHidden;
-    public bool GameOver = false;
+    public bool GameOver;
+    public float CarSpeed = 0.2f;
+    public float HumanSpeed = 0.05f;
+
 
 
     // Called when the node enters the scene tree for the first time.

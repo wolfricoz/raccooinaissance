@@ -32,7 +32,7 @@ public partial class player : CharacterBody2D
 
 		if (Input.IsActionPressed("Run"))
 		{
-			speed = BaseSpeed * 2;
+			speed = BaseSpeed * 2.5f;
 		}
 		else
 		{

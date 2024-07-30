@@ -3,7 +3,7 @@ using System;
 
 public partial class level_7 : Node2D
 {
-	private int _levelNumber = 6;
+	private int _levelNumber = 7;
 	private CustomSignals _customSignals;
 	private PathFollow2D _human;
 	private PathFollow2D _slowHuman;

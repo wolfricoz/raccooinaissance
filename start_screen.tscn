@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7v83tknekeyw"]
+[gd_scene load_steps=8 format=3 uid="uid://c7v83tknekeyw"]
 
 [ext_resource type="Script" path="res://scripts/ui.cs" id="1_yf65f"]
 [ext_resource type="Texture2D" uid="uid://cayvhl2kk2juy" path="res://Sprites/title.png" id="2_sorrv"]
+[ext_resource type="LabelSettings" uid="uid://cw2eqj6dj5jrp" path="res://fonts/BasicLabels.tres" id="3_x3d0p"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6ham3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_t1b3s"]
 specular_color = Color(0.877421, 0, 0.00823498, 1)
@@ -12,36 +15,132 @@ texture = SubResource("CanvasTexture_t1b3s")
 [sub_resource type="Theme" id="Theme_hbruf"]
 Button/styles/focus = SubResource("StyleBoxTexture_ule23")
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_6ham3"]
-
 [node name="ui" type="CanvasLayer"]
 script = ExtResource("1_yf65f")
-metadata/_edit_vertical_guides_ = [550.0]
+metadata/_edit_vertical_guides_ = [576.0]
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-8, -8)
-scale = Vector2(3.05097, 3.05097)
-
-[node name="Title" type="Sprite2D" parent="Node2D"]
-position = Vector2(192, 66.6667)
-scale = Vector2(0.241963, 0.241963)
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(577.786, 195.398)
+scale = Vector2(0.738222, 0.738222)
 texture = ExtResource("2_sorrv")
 
-[node name="StartButton" type="Button" parent="Node2D"]
-offset_left = 136.0
-offset_top = 149.333
-offset_right = 232.0
-offset_bottom = 180.333
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.388235, 0.298039, 1)
+z_index = -1
+z_as_relative = false
+position = Vector2(577.786, 325.572)
+scale = Vector2(1173.1, 660.535)
+texture = SubResource("CanvasTexture_6ham3")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.5
+offset_top = -167.0
+offset_right = 49.5
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="GridContainer"]
+layout_mode = 2
 theme = SubResource("Theme_hbruf")
 text = "Start Game"
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-modulate = Color(0, 0.388235, 0.298039, 1)
-z_index = -1
+[node name="levelselect" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme = SubResource("Theme_hbruf")
+text = "Level Select"
+metadata/_edit_use_anchors_ = true
+
+[node name="quit" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme = SubResource("Theme_hbruf")
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelSelectNode" type="Node2D" parent="."]
+z_index = 3
 z_as_relative = false
-position = Vector2(192, 109.333)
-scale = Vector2(384.5, 216.5)
+position = Vector2(312, 320)
+scale = Vector2(3.05097, 3.05097)
+
+[node name="levelselectmenu" type="Sprite2D" parent="LevelSelectNode"]
+modulate = Color(5.29438e-07, 0.575603, 0.447278, 1)
+position = Vector2(86.5299, 48.8369)
+scale = Vector2(125.862, 97.4194)
 texture = SubResource("CanvasTexture_6ham3")
 
-[connection signal="pressed" from="Node2D/StartButton" to="." method="_on_start_button_pressed"]
+[node name="GridContainer" type="GridContainer" parent="LevelSelectNode"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 31.0
+offset_top = 17.0
+offset_right = 94.0
+offset_bottom = 118.0
+grow_horizontal = 2
+scale = Vector2(1.75986, 0.754719)
+columns = 3
+
+[node name="Level" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Level2" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="Level3" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "3"
+
+[node name="Level4" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "4"
+
+[node name="Level5" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="Level6" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "6"
+
+[node name="Level7" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "7"
+
+[node name="Level8" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "8"
+
+[node name="back" type="Button" parent="LevelSelectNode/GridContainer"]
+layout_mode = 2
+text = "<"
+
+[node name="Label" type="Label" parent="LevelSelectNode"]
+offset_left = 36.3819
+offset_top = 2.62212
+offset_right = 136.382
+offset_bottom = 25.6221
+text = "Select a level"
+label_settings = ExtResource("3_x3d0p")
+
+[connection signal="pressed" from="GridContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="GridContainer/levelselect" to="." method="_on_levelselect_pressed"]
+[connection signal="pressed" from="GridContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/Level" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/Level2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/Level3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/Level4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/Level7" to="." method="_on_level_7_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/Level8" to="." method="_on_level_8_pressed"]
+[connection signal="pressed" from="LevelSelectNode/GridContainer/back" to="." method="_on_back_pressed"]
