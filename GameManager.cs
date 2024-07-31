@@ -74,6 +74,7 @@ public partial class GameManager : Node2D
         GameOver = false;
         IsInventoryOpen = false;
         IsPaused = false;
+        IsHidden = false;
         GetTree().Paused = false;
         this.GetTree().ChangeSceneToFile(scene);
     }

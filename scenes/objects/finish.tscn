@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://tbdcmijn0fmo"]
+[gd_scene load_steps=6 format=3 uid="uid://tbdcmijn0fmo"]
 
 [ext_resource type="Script" path="res://scripts/finish.cs" id="1_2spfg"]
 [ext_resource type="Texture2D" uid="uid://cg2i134rydg3c" path="res://Sprites/plateofcookies.png" id="1_mntk4"]
+[ext_resource type="AudioStream" uid="uid://jxyuhg4mmo5d" path="res://music/winsquare-6993.wav" id="3_b0g64"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emd6x"]
 radius = 16.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_q82de"]
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="finish" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -20,4 +25,16 @@ shape = SubResource("CircleShape2D_emd6x")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mntk4")
 
+[node name="victorysound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b0g64")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -58.0
+offset_top = -72.0
+offset_right = 61.0
+offset_bottom = -49.0
+text = "LEVEL CLEARED"
+label_settings = SubResource("LabelSettings_q82de")
+
 [connection signal="body_entered" from="PlateOfCookies" to="." method="_on_plate_of_cookies_body_entered"]
+[connection signal="finished" from="victorysound" to="." method="_on_victorysound_finished"]

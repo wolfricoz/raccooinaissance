@@ -78,10 +78,6 @@ public partial class human : CharacterBody2D
 			GD.Print("Player seen");
 			GameManager.Singleton.GameOver = true;
 		}
-		else
-		{
-			GD.Print("Player not seen, line of sight blocked by: " + collider.Name);
-		}
 	}
 
 	private void _on_interaction_body_entered(Node2D body)
